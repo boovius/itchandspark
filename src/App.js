@@ -14,8 +14,21 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    const that = this;
+    document.addEventListener("scroll", that.updateImages)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("scroll")
+  }
+
   updateImages() {
-    this.setState({itch: !this.state.itch})
+    if (window.scrollY > 50 && this.state.itch) {
+      this.setState({itch: !this.state.itch})
+    } else if (window.scrollY < 50 && !this.state.itch) {
+      this.setState({itch: !this.state.itch})
+    }
   }
 
   render() {
@@ -28,17 +41,17 @@ class App extends Component {
             <span>SPARK</span>
           </p>
         </header>
-        <div onClick={this.updateImages} className="App-LandingSpot">
+        <div className="App-LandingSpot">
           <ReactCSSTransitionGroup
             transitionName='fadingImage'
             transitionEnterTimeout={1000}
             transitionLeaveTimeout={1000}
           >
             {this.state.itch &&
-              <img src={itchHand} className="App-ItchHand" alt="hand" />
+              <div className="App-LandingImage App-ItchHand" alt="hand" />
             }
           </ReactCSSTransitionGroup>
-          <img src={finger} className="App-ItchHand" alt="finger-pointing" />
+          <div className="App-finger App-LandingImage" alt="finger-pointing" />
           <ReactCSSTransitionGroup
             transitionName='fadingImage'
             transitionEnterTimeout={1000}
@@ -46,7 +59,7 @@ class App extends Component {
           >
              {!this.state.itch &&
                <div className='stars-wrapper'>
-                 <img src={stars} className="App-ItchHand" alt="finger-pointing" />
+                 <div className="App-LandingImage stars" alt="finger-pointing" />
                </div>
              }
           </ReactCSSTransitionGroup>

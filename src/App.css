@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   background-color: #c8c8c8;
-  height: 100vh;
+  height: 100%;
   padding-top: 20px;
 }
 
@@ -32,20 +32,37 @@
 }
 
 .App-LandingSpot {
-  height: 400px;
+  height: 2000px;
   width: 400px;
   position: relative;
   margin: 0 auto;
 }
-.App-ItchHand {
+.App-LandingImage {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
   height: 100%;
+  background-position: 46% 15%;
+  background-repeat: no-repeat;
+  background-size: 356px 322px;
+}
+.App-ItchHand {
+  background-image: url('./assets/images/itchHand.png');
+  background-position: -48% 2%;
+}
+.App-finger {
+  background-image: url('./assets/images/finger.png');
+  background-attachment: fixed;
 }
 .stars-wrapper {
   /* background-color: #2B068A; */
   height: 61%;
+}
+.stars {
+  background-image: url('./assets/images/stars.png');
+  background-attachment: fixed;
+  height: 100%;
 }
 
 .fadingImage-enter {
