@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #c8c8c8;
+  height: 100vh;
+  padding-top: 20px;
 }
 
 .App-logo {
@@ -8,14 +11,11 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: #787878;
+}
+
+.App-header p {
+  margin: 0;
 }
 
 .App-link {
@@ -29,4 +29,39 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-LandingSpot {
+  height: 400px;
+  width: 400px;
+  position: relative;
+  margin: 0 auto;
+}
+.App-ItchHand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.stars-wrapper {
+  /* background-color: #2B068A; */
+  height: 61%;
+}
+
+.fadingImage-enter {
+  opacity: 0.01;
+}
+
+.fadingImage-enter.fadingImage-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.fadingImage-leave {
+  opacity: 1;
+}
+
+.fadingImage-leave.fadingImage-leave-active {
+  opacity: 0.01;
+  transition: opacity 1000ms ease-in;
 }
