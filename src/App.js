@@ -27,6 +27,12 @@ class App extends Component {
     } else if (window.scrollY < 50 && this.state.andSpark) {
       this.setState({andSpark: !this.state.andSpark})
     }
+    const header = document.getElementById('app-header')
+    if (header && window.pageYOffset > header.offsetTop) {
+      header.classList.add('sticky-header')
+    } else if (header) {
+      header.classList.remove('sticky-header')
+    }
   }
 
   render() {
@@ -34,20 +40,18 @@ class App extends Component {
       <div className="App">
         <div className="App-container">
           <div className="App-LandingSpot">
-            <header className="App-header">
-              <p>
-                <span>itch</span>
-                <span>&</span>
-                <span>SPARK</span>
-              </p>
-            </header>
             <ReactCSSTransitionGroup
               transitionName='fadingImage'
               transitionEnterTimeout={1000}
               transitionLeaveTimeout={1000}
             >
               {!this.state.andSpark &&
-                <div className="App-LandingImage App-ItchHand" alt="hand" />
+                <div className="App-LandingImage App-ItchHand" alt="hand">
+                  <header className="App-header">
+                    <span>itch</span>
+                    <span>&</span>
+                  </header>
+                </div>
               }
             </ReactCSSTransitionGroup>
             <div className="App-finger App-LandingImage" alt="finger-pointing" />
@@ -59,6 +63,11 @@ class App extends Component {
               {this.state.andSpark &&
                 <div className='stars-wrapper'>
                   <div className="App-LandingImage stars" alt="stars" />
+                  <header id='app-header' className="App-header">
+                    <span>itch</span>
+                    <span>&</span>
+                    <span>SPARK</span>
+                  </header>
                 </div>
               }
             </ReactCSSTransitionGroup>

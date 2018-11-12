@@ -14,7 +14,7 @@
 /* Landing Image styles */
 
 .App-LandingSpot {
-  height: 1000px;
+  height: 750px;
   width: 400px;
   position: relative;
   margin: 0 auto;
@@ -29,6 +29,20 @@
   background-repeat: no-repeat;
   background-size: 356px 322px;
 }
+.App-header {
+  position: relative;
+  top: 320px;
+  display: flex;
+  justify-content: flex-end;
+  color: #8E918A;
+}
+
+.sticky-header {
+  position: fixed;
+  top: 16px;
+  right: 35%;
+}
+
 .App-ItchHand {
   background-image: url('./assets/images/itchHand.png');
   background-position: -48% 2%;
@@ -81,6 +95,10 @@
 }
 
 /* what-selling styles */
+.what-selling {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
 
 .what-selling .business-types {
   margin-bottom: 24px;
