@@ -8,7 +8,8 @@ class App extends Component {
     super(props)
     this.updateLandingOnScroll = this.updateLandingOnScroll.bind(this)
     this.state = {
-      andSpark: false
+      andSpark: false,
+      tagline: false,
     }
   }
 
@@ -30,6 +31,7 @@ class App extends Component {
     const header = document.getElementById('app-header')
     if (header && window.pageYOffset > header.offsetTop) {
       header.classList.add('sticky-header')
+      this.setState({tagline: !this.state.tagline})
     } else if (header) {
       header.classList.remove('sticky-header')
     }
@@ -54,7 +56,21 @@ class App extends Component {
                 </div>
               }
             </ReactCSSTransitionGroup>
-            <div className="App-finger App-LandingImage" alt="finger-pointing" />
+            <div className="App-finger App-LandingImage" alt="finger-pointing">
+              <ReactCSSTransitionGroup
+                transitionName='fadingImage'
+                transitionEnterTimeout={1000}
+                transitionLeaveTimeout={1000}
+              >
+                {this.state.tagline &&
+                  <div className="TheTagline">
+                    <div>Wanna create something amazing?</div>
+                    <div>But unsure how or where to start?</div>
+                    <div>We'll help you get you going with momentum.</div>
+                  </div>
+                }
+              </ReactCSSTransitionGroup>
+            </div>
             <ReactCSSTransitionGroup
               transitionName='fadingImage'
               transitionEnterTimeout={1000}
@@ -72,7 +88,7 @@ class App extends Component {
               }
             </ReactCSSTransitionGroup>
           </div>
-          <div className="what-selling">
+          <div className="TheTypes">
             <div className="business-types">
               <div className="personal">
                 <div className="type">Personal</div>

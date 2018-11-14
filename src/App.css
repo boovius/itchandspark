@@ -79,32 +79,41 @@
   transition: opacity 1000ms ease-in;
 }
 
-.what-selling {
+
+.TheTagline {
+  color: #8E918A;
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+}
+
+
+.TheTypes {
   color: #8E918A;
 }
 
-.what-selling .business-types {
+.TheTypes .business-types {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.spacer {
-  margin-top: 200px;
-  height: 1000px;
-}
-
-/* what-selling styles */
-.what-selling {
+/* TheTypes styles */
+.TheTypes {
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
-.what-selling .business-types {
+.TheTypes .business-types {
   margin-bottom: 24px;
 }
 
-.what-selling .business-types .type  {
+.TheTypes .business-types .type  {
   margin-bottom: 16px;
   font-size: 30px;
+}
+
+.spacer {
+  margin-top: 200px;
+  height: 1000px;
 }
