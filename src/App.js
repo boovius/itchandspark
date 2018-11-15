@@ -8,8 +8,8 @@ class App extends Component {
     super(props)
     this.updateLandingOnScroll = this.updateLandingOnScroll.bind(this)
     this.state = {
-      andSpark: false,
-      tagline: false,
+      stars: false,
+      titleTransition: false,
     }
   }
 
@@ -19,74 +19,83 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener("scroll")
+    const that = this;
+    document.removeEventListener("scroll", that.updateLandingOnScroll)
   }
 
   updateLandingOnScroll() {
-    if (window.scrollY > 50 && !this.state.andSpark) {
-      this.setState({andSpark: !this.state.andSpark})
-    } else if (window.scrollY < 50 && this.state.andSpark) {
-      this.setState({andSpark: !this.state.andSpark})
+    if (window.scrollY > 50 && !this.state.stars) {
+      this.setState({stars: !this.state.stars})
+    } else if (window.scrollY < 50 && this.state.stars) {
+      this.setState({stars: !this.state.stars})
     }
     const header = document.getElementById('app-header')
-    if (header && window.pageYOffset > header.offsetTop) {
-      header.classList.add('sticky-header')
-      this.setState({tagline: !this.state.tagline})
-    } else if (header) {
-      header.classList.remove('sticky-header')
+    if (header && window.scrollY > header.offsetTop) {
+      header.classList.add('stickyHeader')
+      this.setState({titleTransition: true})
+    } else {
+      header.classList.remove('stickyHeader')
+      this.setState({titleTransition: false})
     }
   }
 
   render() {
     return (
       <div className="App">
-        <div className="App-container">
+        <header id='app-header' className="App-header">
+          <div className="container">
+            <ReactCSSTransitionGroup
+              transitionName='itchHandTransition'
+              transitionEnterTimeout={300}
+              transitionLeaveTimeout={1000}
+            >
+              {!this.state.stars &&
+                <span>itch</span>
+              }
+            </ReactCSSTransitionGroup>
+            <ReactCSSTransitionGroup
+              transitionName='stickyHeader'
+              transitionEnterTimeout={300}
+              transitionLeaveTimeout={300}
+            >
+              {this.state.titleTransition &&
+                <div>
+                  <span>itch</span>
+                  <span>&</span>
+                  <span>SPARK</span>
+                </div>
+              }
+            </ReactCSSTransitionGroup>
+          </div>
+        </header>
+        <div className="container">
           <div className="App-LandingSpot">
             <ReactCSSTransitionGroup
-              transitionName='fadingImage'
-              transitionEnterTimeout={1000}
+              transitionName='itchHandTransition'
+              transitionEnterTimeout={300}
               transitionLeaveTimeout={1000}
             >
-              {!this.state.andSpark &&
-                <div className="App-LandingImage App-ItchHand" alt="hand">
-                  <header className="App-header">
-                    <span>itch</span>
-                    <span>&</span>
-                  </header>
-                </div>
+              {!this.state.stars &&
+                <div className="App-LandingImage App-ItchHand" alt="hand" />
               }
             </ReactCSSTransitionGroup>
-            <div className="App-finger App-LandingImage" alt="finger-pointing">
-              <ReactCSSTransitionGroup
-                transitionName='fadingImage'
-                transitionEnterTimeout={1000}
-                transitionLeaveTimeout={1000}
-              >
-                {this.state.tagline &&
-                  <div className="TheTagline">
-                    <div>Wanna create something amazing?</div>
-                    <div>But unsure how or where to start?</div>
-                    <div>We'll help you get you going with momentum.</div>
-                  </div>
-                }
-              </ReactCSSTransitionGroup>
-            </div>
+            <div className="App-finger App-LandingImage" alt="finger-pointing" />
             <ReactCSSTransitionGroup
               transitionName='fadingImage'
               transitionEnterTimeout={1000}
               transitionLeaveTimeout={1000}
             >
-              {this.state.andSpark &&
+              {this.state.stars &&
                 <div className='stars-wrapper'>
                   <div className="App-LandingImage stars" alt="stars" />
-                  <header id='app-header' className="App-header">
-                    <span>itch</span>
-                    <span>&</span>
-                    <span>SPARK</span>
-                  </header>
                 </div>
               }
             </ReactCSSTransitionGroup>
+          </div>
+          <div className="TheTagline">
+            <div>Wanna create something amazing?</div>
+            <div>But unsure how or where to start?</div>
+            <div>We'll help you get you going with momentum.</div>
           </div>
           <div className="TheTypes">
             <div className="business-types">

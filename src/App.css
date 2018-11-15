@@ -5,7 +5,7 @@
   padding-top: 20px;
 }
 
-.App-container {
+.container {
   width: 50%;
   margin: 0 auto;
 }
@@ -36,16 +36,49 @@
   justify-content: flex-end;
   color: #8E918A;
 }
+.App-header .container {
+  display: flex;
+  justify-content: flex-end;
+}
+.App-header .container > * {
+  margin-right: 30px;
+}
 
 .sticky-header {
   position: fixed;
-  top: 16px;
-  right: 35%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 1;
+}
+
+.stickyHeader-enter {
+  background-color: transparent;
+}
+
+.stickyHeader-enter.stickyHeader-enter-active {
+  background-color: white;
+  transition: background-color 300ms ease-in;
+}
+
+.stickyHeader-leave {
+  background-color: white;
+}
+
+.stickyHeader-leave.stickyHeader-leave-active {
+  background-color: transparent;
+  transition: background-color 300ms ease-in;
+}
+.sticky-header .container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .App-ItchHand {
   background-image: url('./assets/images/itchHand.png');
-  background-position: -48% 2%;
+  background-position: -49% -2.4%;
 }
 .App-finger {
   background-image: url('./assets/images/finger.png');
@@ -79,14 +112,28 @@
   transition: opacity 1000ms ease-in;
 }
 
+.itchHandTransition-enter {
+  opacity: 0.01;
+}
+
+.itchHandTransition-enter.itchHandTransition-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.itchHandTransition-leave {
+  opacity: 1;
+}
+
+.itchHandTransition-leave.itchHandTransition-leave-active {
+  opacity: 0.01;
+  transition: opacity 1000ms ease-in;
+}
+
 
 .TheTagline {
   color: #8E918A;
-  position: absolute;
-  bottom: 10px;
-  right: 0;
 }
-
 
 .TheTypes {
   color: #8E918A;
