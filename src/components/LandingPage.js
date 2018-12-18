@@ -1,6 +1,7 @@
 import React from 'react';
 import { css as glamor } from 'glamor';
 import { itchColor, sparkColor } from '../colors'
+import FadeIn from 'react-fade-in'
 
 const landingPageStyles = glamor({
   display: 'flex',
@@ -34,9 +35,11 @@ const LandingPage = () => {
       <div id='LandingPage-itch' className={`${landingPageSectionStyles} ${itchStyles}`}>
         <div className='copy'>itch</div>
       </div>
-      <div id='LandingPage-spark' className={`${landingPageSectionStyles} ${sparkStyles}`}>
-        <div className='copy'>spark</div>
-      </div>
+      <FadeIn>
+        <div id='LandingPage-spark' className={`${landingPageSectionStyles} ${sparkStyles}`}>
+          <div className='copy'>spark</div>
+        </div>
+      </FadeIn>
     </div>
   )
 }
